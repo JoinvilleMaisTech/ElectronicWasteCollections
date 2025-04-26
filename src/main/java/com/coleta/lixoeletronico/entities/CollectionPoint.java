@@ -28,5 +28,4 @@ public class CollectionPoint {
 
     @OneToMany(mappedBy = "collectionPoint", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CollectionMaterial> materials = new ArrayList<>();
-
 }

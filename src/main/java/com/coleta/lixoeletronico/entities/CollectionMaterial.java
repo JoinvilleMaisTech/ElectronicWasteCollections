@@ -16,14 +16,13 @@ public class CollectionMaterial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @ManyToOne
     @JoinColumn(name = "collection_point_id", nullable = false)
     private CollectionPoint collectionPoint;
 
     @ManyToOne
     @JoinColumn(name = "electronic_waste_id", nullable = false)
-    private CollectionMaterial collectionMaterial;
+    private ElectronicWaste electronicWaste;
 
     @Column(nullable = false)
     private BigDecimal maxCapacity;

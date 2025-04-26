@@ -19,6 +19,4 @@ public class ElectronicWaste {
 
     @Column(nullable = false)
     private String description;
-
-
 }
