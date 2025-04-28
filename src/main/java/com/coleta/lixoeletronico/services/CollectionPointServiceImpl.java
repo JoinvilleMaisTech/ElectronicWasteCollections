@@ -35,6 +35,12 @@ public class CollectionPointServiceImpl implements CollectionPointService{
     }
 
     @Override
+    public List<CollectionPointResponseDto> findByElectronicWasteName(String name) {
+        List<CollectionPoint> entities = repository.findByElectronicWasteNameContainingIgnoreCase(name);
+        return CollectionPointMapper.toResponseDtos(entities);
+    }
+
+    @Override
     public CollectionPointResponseDto create(CollectionPointRequestDto dto) {
         return save(new CollectionPoint(), dto);
     }

@@ -26,6 +26,11 @@ public class CollectionPointController {
         return service.findById(id);
     }
 
+    @GetMapping("/electronic-waste/name/{name}")
+    public List<CollectionPointResponseDto> findByElectronicWasteName(@PathVariable String name) {
+        return service.findByElectronicWasteName(name);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CollectionPointResponseDto save(@RequestBody CollectionPointRequestDto dto) {
