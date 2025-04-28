@@ -6,6 +6,7 @@ import com.coleta.lixoeletronico.dtos.CollectionPoint.CollectionPointResponseDto
 import com.coleta.lixoeletronico.entities.CollectionMaterial;
 import com.coleta.lixoeletronico.entities.CollectionPoint;
 import com.coleta.lixoeletronico.entities.ElectronicWaste;
+import com.coleta.lixoeletronico.errors.exeptions.CollectionPointNotFoundException;
 import com.coleta.lixoeletronico.mappers.CollectionPointMapper;
 import com.coleta.lixoeletronico.repositories.CollectionPointRepository;
 import lombok.RequiredArgsConstructor;
@@ -52,8 +53,9 @@ public class CollectionPointServiceImpl implements CollectionPointService{
     }
 
     private CollectionPoint findEntityById(Long id) {
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id).orElseThrow(() -> new CollectionPointNotFoundException(id));
     }
+
 
     private CollectionPointResponseDto save(CollectionPoint cp, CollectionPointRequestDto dto) {
         CollectionPointMapper.toEntity(cp, dto);

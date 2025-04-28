@@ -2,7 +2,6 @@ package com.coleta.lixoeletronico.mappers;
 
 import com.coleta.lixoeletronico.dtos.CollectionPoint.CollectionPointRequestDto;
 import com.coleta.lixoeletronico.dtos.CollectionPoint.CollectionPointResponseDto;
-import com.coleta.lixoeletronico.entities.CollectionMaterial;
 import com.coleta.lixoeletronico.entities.CollectionPoint;
 
 import java.util.List;
