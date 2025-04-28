@@ -3,6 +3,7 @@ package com.coleta.lixoeletronico.services;
 import com.coleta.lixoeletronico.dtos.ElectronicWaste.ElectronicWasteRequestDto;
 import com.coleta.lixoeletronico.dtos.ElectronicWaste.ElectronicWasteResponseDto;
 import com.coleta.lixoeletronico.entities.ElectronicWaste;
+import com.coleta.lixoeletronico.errors.exeptions.ElectronicWasteNotFoundException;
 import com.coleta.lixoeletronico.mappers.ElectronicWasteMapper;
 import com.coleta.lixoeletronico.repositories.ElectronicWasteRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +26,9 @@ public class ElectronicWasteServiceImpl implements ElectronicWasteService{
     @Override
     public ElectronicWasteResponseDto findById(Long id) {
         ElectronicWaste entity = findEntityById(id);
-
         return ElectronicWasteMapper.toResponseDto(entity);
     }
+
 
     @Override
     public ElectronicWasteResponseDto create(ElectronicWasteRequestDto dto) {
@@ -51,7 +52,8 @@ public class ElectronicWasteServiceImpl implements ElectronicWasteService{
         repository.delete(ew);
     }
 
+    @Override
     public ElectronicWaste findEntityById(Long id) {
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id).orElseThrow(() -> new ElectronicWasteNotFoundException(id));
     }
 }
